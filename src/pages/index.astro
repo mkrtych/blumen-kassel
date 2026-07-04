@@ -1,7 +1,42 @@
----
+﻿---
+const siteUrl = "https://blumenkassel.de";
+const canonicalUrl = `${siteUrl}/`;
 const pageTitle = "Blumen Kassel | Individuelle Blumensträuße in Kassel";
 const pageDescription =
 	"Blumen Kassel gestaltet individuelle Blumensträuße von Hand. Für Menschen, Geschichten und Momente, die sorgfältig ausgedrückt werden sollen.";
+const phoneNumber = "+491602233298";
+const phoneDisplay = "+49 160 2233298";
+const whatsappUrl = "https://wa.me/491602233298";
+const instagramUrl = "https://www.instagram.com/blumen.kassel/";
+
+const floristSchema = {
+	"@context": "https://schema.org",
+	"@type": "Florist",
+	"@id": `${canonicalUrl}#florist`,
+	name: "Blumen Kassel",
+	url: canonicalUrl,
+	telephone: phoneNumber,
+	description: pageDescription,
+	address: {
+		"@type": "PostalAddress",
+		streetAddress: "Wilhelmshöher Allee 69",
+		addressLocality: "Kassel",
+		addressCountry: "DE",
+	},
+	openingHoursSpecification: [
+		{
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			opens: "10:00",
+			closes: "18:00",
+		},
+	],
+	areaServed: {
+		"@type": "City",
+		name: "Kassel",
+	},
+	sameAs: [instagramUrl],
+};
 ---
 
 <html lang="de">
@@ -14,15 +49,21 @@ const pageDescription =
 
 		<title>{pageTitle}</title>
 		<meta name="description" content={pageDescription} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalUrl} />
 
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={pageDescription} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content="Blumen Kassel" />
 		<meta property="og:locale" content="de_DE" />
 
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={pageDescription} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(floristSchema)} />
 	</head>
 
 	<body>
@@ -83,14 +124,23 @@ const pageDescription =
 					Bald zeigen wir hier aktuelle Sträuße, saisonale Farben und Einblicke
 					aus der Werkstatt.
 				</p>
+				<p>
+					<a href={instagramUrl}>@blumen.kassel auf Instagram</a>
+				</p>
 			</section>
 
 			<section id="kontakt" class="section contact">
 				<p class="eyebrow">Kontakt</p>
 				<h2>Erzähl uns, was der Strauß sagen soll.</h2>
 				<p>
-					Für individuelle Anfragen in Kassel erreichst du uns bald direkt über
-					diese Seite.
+					Für individuelle Anfragen in Kassel erreichst du uns per Telefon oder
+					WhatsApp unter <a href={`tel:${phoneNumber}`}>{phoneDisplay}</a>.
+				</p>
+				<p>
+					Wilhelmshöher Allee 69, Kassel · Montag bis Freitag, 10:00-18:00
+				</p>
+				<p>
+					<a href={whatsappUrl}>WhatsApp öffnen</a>
 				</p>
 			</section>
 		</main>
@@ -232,4 +282,3 @@ const pageDescription =
 		}
 	}
 </style>
-
