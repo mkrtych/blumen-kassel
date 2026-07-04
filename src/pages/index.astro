@@ -1,17 +1,235 @@
 ---
-
+const pageTitle = "Blumen Kassel | Individuelle Blumensträuße in Kassel";
+const pageDescription =
+	"Blumen Kassel gestaltet individuelle Blumensträuße von Hand. Für Menschen, Geschichten und Momente, die sorgfältig ausgedrückt werden sollen.";
 ---
 
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="de_DE" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
 	</head>
+
 	<body>
-		<h1>Astro</h1>
+		<header class="site-header">
+			<a class="brand" href="/">Blumen Kassel</a>
+			<nav aria-label="Hauptnavigation">
+				<a href="#heute">Heute verfügbar</a>
+				<a href="#ueber-uns">Über uns</a>
+				<a href="#kontakt">Kontakt</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero">
+				<p class="eyebrow">Florale Werkstatt in Kassel</p>
+				<h1>Blumen, die sagen, was Worte manchmal nicht schaffen.</h1>
+				<p class="hero-text">
+					Wir gestalten individuelle Blumensträuße von Hand. Nicht als schnelle
+					Dekoration, sondern als sorgfältige Sprache für Gefühle, Beziehungen
+					und Momente.
+				</p>
+				<a class="button" href="#kontakt">Geschichte erzählen</a>
+			</section>
+
+			<section id="heute" class="section">
+				<p class="eyebrow">Heute verfügbar</p>
+				<h2>Frische Sträuße, individuell zusammengestellt.</h2>
+				<p>
+					Jeder Strauß entsteht aus dem, was frisch verfügbar ist, und aus dem,
+					was er ausdrücken soll: Dankbarkeit, Nähe, Freude, Versöhnung oder
+					einfach Aufmerksamkeit.
+				</p>
+			</section>
+
+			<section id="ueber-uns" class="section">
+				<p class="eyebrow">Über uns</p>
+				<h2>Wir beginnen nicht mit Blumen. Wir beginnen mit der Geschichte.</h2>
+				<p>
+					Ein Mensch kommt nicht nur wegen eines Straußes. Er kommt mit einem
+					Anlass, einer Beziehung und einem Gefühl. Unsere Aufgabe ist es, dieses
+					Gefühl ohne Verlust sichtbar zu machen.
+				</p>
+			</section>
+
+			<section class="section">
+				<p class="eyebrow">Warum Blumen Kassel</p>
+				<h2>Der Kunde ist der Hauptcharakter. Wir sind der Begleiter.</h2>
+				<p>
+					Blumen Kassel steht für ruhige Beratung, handwerkliche Gestaltung und
+					echtes Interesse daran, was nach der Übergabe passiert.
+				</p>
+			</section>
+
+			<section class="section">
+				<p class="eyebrow">Instagram</p>
+				<h2>Neue Arbeiten und aktuelle Eindrücke.</h2>
+				<p>
+					Bald zeigen wir hier aktuelle Sträuße, saisonale Farben und Einblicke
+					aus der Werkstatt.
+				</p>
+			</section>
+
+			<section id="kontakt" class="section contact">
+				<p class="eyebrow">Kontakt</p>
+				<h2>Erzähl uns, was der Strauß sagen soll.</h2>
+				<p>
+					Für individuelle Anfragen in Kassel erreichst du uns bald direkt über
+					diese Seite.
+				</p>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<p>© 2026 Blumen Kassel</p>
+		</footer>
 	</body>
 </html>
+
+<style>
+	:root {
+		color: #1d1b18;
+		background: #f8f5ef;
+		font-family:
+			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	body {
+		margin: 0;
+		background: #f8f5ef;
+		color: #1d1b18;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		padding: 24px clamp(20px, 5vw, 72px);
+	}
+
+	.brand {
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	nav {
+		display: flex;
+		gap: 20px;
+		font-size: 14px;
+	}
+
+	nav a {
+		text-decoration: none;
+		color: #5f5a52;
+	}
+
+	.hero {
+		min-height: 72vh;
+		display: grid;
+		align-content: center;
+		padding: 48px clamp(20px, 8vw, 120px);
+		max-width: 980px;
+	}
+
+	.eyebrow {
+		margin: 0 0 16px;
+		color: #7b6f5f;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	h1,
+	h2,
+	p {
+		letter-spacing: 0;
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(44px, 8vw, 96px);
+		line-height: 0.95;
+		max-width: 920px;
+	}
+
+	h2 {
+		margin: 0 0 20px;
+		font-size: clamp(32px, 5vw, 56px);
+		line-height: 1;
+		max-width: 820px;
+	}
+
+	p {
+		font-size: 18px;
+		line-height: 1.7;
+		max-width: 720px;
+	}
+
+	.hero-text {
+		margin: 28px 0 36px;
+		color: #4f4a43;
+	}
+
+	.button {
+		width: fit-content;
+		border: 1px solid #1d1b18;
+		padding: 14px 20px;
+		text-decoration: none;
+		font-weight: 700;
+	}
+
+	.section {
+		padding: 96px clamp(20px, 8vw, 120px);
+		border-top: 1px solid #ded8cf;
+	}
+
+	.section p:not(.eyebrow) {
+		color: #4f4a43;
+	}
+
+	.contact {
+		background: #ede6dc;
+	}
+
+	.footer {
+		padding: 32px clamp(20px, 5vw, 72px);
+		color: #6f675c;
+	}
+
+	@media (max-width: 720px) {
+		.site-header {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		nav {
+			flex-wrap: wrap;
+		}
+
+		.hero {
+			min-height: 64vh;
+		}
+	}
+</style>
+
