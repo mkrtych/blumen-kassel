@@ -1,4 +1,5 @@
 ﻿---
+import BouquetShowcase from "../components/BouquetShowcase.astro";
 const siteUrl = "https://blumenkassel.de";
 const canonicalUrl = `${siteUrl}/`;
 const pageTitle = "Sisters Studio – Blumen Kassel | Handgebundene Blumensträuße in Kassel";
@@ -111,17 +112,7 @@ const floristSchema = {
 					dafür zu finden.
 				</p>
 			</section>
-
-			<section id="heute" class="section">
-				<p class="eyebrow">Heute verfügbar</p>
-				<h2>Heute im Studio</h2>
-				<p>
-					Frisch gebundene Sträuße, die heute im Laden verfügbar sind. Jedes
-					Stück ist handgemacht und nur einmal da.
-				</p>
-				<p class="note">Für aktuelle Verfügbarkeit schreiben Sie uns gerne direkt.</p>
-				<a class="button" href={instagramUrl}>Auf Instagram ansehen</a>
-			</section>
+			<BouquetShowcase locale="de" />
 
 			<section id="ueber-uns" class="section">
 				<p class="eyebrow">Über uns</p>
@@ -472,5 +463,6 @@ const floristSchema = {
 		}
 	}
 </style>
+
 
 
