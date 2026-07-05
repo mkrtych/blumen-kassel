@@ -1025,4 +1025,160 @@ const floristSchema = {
 			height: 14px;
 		}
 	}
-</style>
+
+	/* Atelier typography */
+	body {
+		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+		font-weight: 400;
+	}
+
+	.site-header {
+		min-height: 34px;
+		padding: 5px clamp(14px, 4vw, 38px);
+		background: rgba(248, 245, 239, 0.78);
+		backdrop-filter: blur(14px);
+	}
+
+	.site-header .brand {
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(19px, 1.9vw, 24px);
+		font-weight: 400;
+		line-height: 1;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	.site-header nav {
+		gap: clamp(10px, 1.8vw, 16px);
+	}
+
+	.site-header nav a,
+	.site-header .language-switch a {
+		font-size: 10px;
+		font-weight: 300;
+		line-height: 1;
+		letter-spacing: 0;
+		color: rgba(29, 27, 24, 0.66);
+	}
+
+	.site-header .language-switch a[aria-current="page"] {
+		font-weight: 400;
+		color: rgba(29, 27, 24, 0.9);
+	}
+
+	.site-header .nav-icon,
+	.site-header .nav-icon svg {
+		width: 14px;
+		height: 14px;
+	}
+
+	.hero {
+		padding-top: clamp(42px, 8vh, 86px);
+		padding-bottom: clamp(32px, 6vh, 62px);
+	}
+
+	.hero-copy {
+		max-width: min(500px, 100%);
+	}
+
+	h1,
+	h2,
+	.statement {
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	h1 {
+		max-width: 560px;
+		font-size: clamp(34px, 4.5vw, 58px);
+		line-height: 1.03;
+	}
+
+	h2 {
+		max-width: 620px;
+		font-size: clamp(25px, 2.8vw, 36px);
+		line-height: 1.13;
+	}
+
+	.eyebrow {
+		margin-bottom: 9px;
+		font-size: 10px;
+		font-weight: 300;
+		line-height: 1.2;
+		color: rgba(95, 90, 82, 0.82);
+		letter-spacing: 0;
+	}
+
+	.hero-text {
+		max-width: 440px;
+		margin-top: 18px;
+		font-size: clamp(15px, 1.1vw, 17px);
+		font-weight: 300;
+		line-height: 1.58;
+		color: rgba(29, 27, 24, 0.76);
+	}
+
+	.section p:not(.eyebrow),
+	.section li,
+	address {
+		max-width: 600px;
+		font-size: clamp(15px, 1.2vw, 16.5px);
+		font-weight: 300;
+		line-height: 1.7;
+	}
+
+	.section {
+		padding-block: clamp(50px, 8vw, 88px);
+	}
+
+	@media (max-width: 720px) {
+		.site-header {
+			min-height: 32px;
+			padding-block: 5px;
+		}
+
+		.site-header .brand {
+			font-size: 18px;
+		}
+
+		.site-header nav {
+			gap: 8px;
+		}
+
+		.site-header nav a,
+		.site-header .language-switch a {
+			font-size: 9px;
+		}
+
+		.hero {
+			min-height: calc(100svh - 56px);
+			padding-top: 34px;
+		}
+
+		.hero-copy {
+			max-width: min(330px, 100%);
+		}
+
+		h1 {
+			max-width: 320px;
+			font-size: clamp(30px, 8.4vw, 38px);
+			line-height: 1.07;
+		}
+
+		h2 {
+			font-size: clamp(24px, 6.4vw, 30px);
+			line-height: 1.14;
+		}
+
+		.hero-text {
+			max-width: 310px;
+			font-size: 15px;
+			line-height: 1.55;
+		}
+
+		.section {
+			padding-block: 46px;
+		}
+	}</style>
