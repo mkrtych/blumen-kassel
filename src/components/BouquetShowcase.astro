@@ -474,4 +474,89 @@ const productMessage = (product: FlowerProduct) => {
 			font-size: clamp(26px, 7vw, 34px);
 		}
 	}
-</style>
+
+	/* Atelier showcase typography */
+	.showcase-section {
+		padding-top: clamp(38px, 6vw, 68px);
+	}
+
+	.showcase-intro {
+		max-width: 620px;
+	}
+
+	.showcase-section .eyebrow {
+		font-size: 10px;
+		font-weight: 300;
+		line-height: 1.2;
+		letter-spacing: 0;
+		color: rgba(95, 90, 82, 0.82);
+	}
+
+	.showcase-section h2,
+	.showcase-heading h3,
+	.product-card h4 {
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	.showcase-section h2 {
+		max-width: 620px;
+		font-size: clamp(25px, 2.8vw, 36px);
+		line-height: 1.13;
+	}
+
+	.showcase-heading h3 {
+		font-size: clamp(22px, 2.2vw, 28px);
+		line-height: 1.14;
+	}
+
+	.showcase-section p {
+		max-width: 600px;
+		font-size: clamp(15px, 1.2vw, 16.5px);
+		font-weight: 300;
+		line-height: 1.7;
+	}
+
+	.product-card h4 {
+		font-size: 19px;
+		line-height: 1.18;
+	}
+
+	.product-card li,
+	.card-meta,
+	.price {
+		font-weight: 300;
+	}
+
+	.card-action,
+	.status-pill {
+		font-size: 12px;
+		font-weight: 400;
+		letter-spacing: 0;
+	}
+
+	@media (max-width: 720px) {
+		.showcase-section {
+			padding-top: 36px;
+		}
+
+		.showcase-intro {
+			max-width: 320px;
+		}
+
+		.showcase-section h2 {
+			font-size: clamp(24px, 6.4vw, 30px);
+			line-height: 1.14;
+		}
+
+		.showcase-heading h3 {
+			font-size: 23px;
+		}
+
+		.showcase-section p {
+			font-size: 15px;
+			line-height: 1.58;
+		}
+	}</style>
