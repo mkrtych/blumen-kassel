@@ -585,6 +585,7 @@ const productMessage = (product: FlowerProduct) => {
 	.card-body {
 		height: 100%;
 		grid-template-rows: auto auto 1fr auto;
+		overflow: visible;
 	}
 
 	.author-card .card-body {
@@ -596,10 +597,11 @@ const productMessage = (product: FlowerProduct) => {
 		align-items: center;
 		justify-content: center;
 		gap: 7px;
-		width: fit-content;
-		min-height: 32px;
+		justify-self: center;
+		width: 100%;
+		min-height: 38px;
 		margin-top: auto;
-		padding: 3px 0 2px;
+		padding: 8px 0 6px;
 		background: transparent;
 		border: 0;
 		border-radius: 0;
@@ -607,8 +609,13 @@ const productMessage = (product: FlowerProduct) => {
 		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 		font-size: 13px;
 		font-weight: 300;
-		line-height: 1.2;
+		line-height: 1.35;
 		text-transform: none;
+	}
+
+	.card-action span {
+		display: inline-block;
+		padding-bottom: 1px;
 	}
 
 	.card-action svg {
