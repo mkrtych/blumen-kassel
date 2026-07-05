@@ -1,19 +1,23 @@
 ﻿---
 const siteUrl = "https://blumenkassel.de";
 const canonicalUrl = `${siteUrl}/`;
-const pageTitle = "Blumen Kassel | Individuelle Blumensträuße in Kassel";
+const pageTitle = "Sisters Studio – Blumen Kassel | Handgebundene Blumensträuße in Kassel";
 const pageDescription =
-	"Blumen Kassel gestaltet individuelle Blumensträuße von Hand. Für Menschen, Geschichten und Momente, die sorgfältig ausgedrückt werden sollen.";
+	"Sisters Studio – Blumen Kassel gestaltet handgebundene Blumensträuße für besondere Momente. Persönliche Beratung, kreative Floristik und frische Blumen in Kassel.";
+const ogTitle = "Sisters Studio – Blumen Kassel";
+const ogDescription =
+	"Handgebundene Blumensträuße für Momente, die mehr sagen sollen als Worte. Moderne Blumenwerkstatt in Kassel.";
 const phoneNumber = "+491602233298";
 const phoneDisplay = "+49 160 2233298";
 const whatsappUrl = "https://wa.me/491602233298";
 const instagramUrl = "https://www.instagram.com/blumen.kassel/";
+const routeUrl = "https://www.google.com/maps/search/?api=1&query=Wilhelmsh%C3%B6her%20Allee%2069%2C%2034121%20Kassel";
 
 const floristSchema = {
 	"@context": "https://schema.org",
 	"@type": "Florist",
 	"@id": `${canonicalUrl}#florist`,
-	name: "Blumen Kassel",
+	name: "Sisters Studio – Blumen Kassel",
 	url: canonicalUrl,
 	telephone: phoneNumber,
 	description: pageDescription,
@@ -53,101 +57,208 @@ const floristSchema = {
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonicalUrl} />
 
-		<meta property="og:title" content={pageTitle} />
-		<meta property="og:description" content={pageDescription} />
+		<meta property="og:title" content={ogTitle} />
+		<meta property="og:description" content={ogDescription} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:site_name" content="Blumen Kassel" />
+		<meta property="og:site_name" content="Sisters Studio – Blumen Kassel" />
 		<meta property="og:locale" content="de_DE" />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={pageTitle} />
-		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:title" content={ogTitle} />
+		<meta name="twitter:description" content={ogDescription} />
 
 		<script type="application/ld+json" set:html={JSON.stringify(floristSchema)} />
 	</head>
 
 	<body>
 		<header class="site-header">
-			<a class="brand" href="/">Blumen Kassel</a>
+			<a class="brand" href="/">Sisters Studio – Blumen Kassel</a>
 			<nav aria-label="Hauptnavigation">
-				<a href="#heute">Heute verfügbar</a>
+				<a href="#heute">Aktuelle Sträuße</a>
 				<a href="#ueber-uns">Über uns</a>
 				<a href="#kontakt">Kontakt</a>
+				<a href={instagramUrl}>Instagram</a>
 			</nav>
 		</header>
 
 		<main>
 			<section class="hero">
-				<p class="eyebrow">Florale Werkstatt in Kassel</p>
-				<h1>Blumen, die sagen, was Worte manchmal nicht schaffen.</h1>
+				<p class="eyebrow">Sisters Studio – Blumen Kassel</p>
+				<h1>Handgebundene Blumen für Momente, die mehr sagen sollen als Worte.</h1>
 				<p class="hero-text">
-					Wir gestalten individuelle Blumensträuße von Hand. Nicht als schnelle
-					Dekoration, sondern als sorgfältige Sprache für Gefühle, Beziehungen
-					und Momente.
+					Jeder Strauß beginnt mit einer Geschichte. Wir gestalten Blumen nicht
+					nach Schema, sondern nach dem Gefühl, das Sie weitergeben möchten.
 				</p>
-				<a class="button" href="#kontakt">Geschichte erzählen</a>
+				<div class="actions">
+					<a class="button" href="#heute">Aktuelle Sträuße ansehen</a>
+					<a class="button button-secondary" href="#kontakt">Kontakt aufnehmen</a>
+				</div>
+			</section>
+
+			<section class="section intro">
+				<h2>Blumen, die sagen, was Worte manchmal nicht können.</h2>
+				<p>
+					Ob Geburtstag, Liebe, Dankbarkeit, Entschuldigung oder einfach ein
+					schöner Moment zwischendurch — wir helfen Ihnen, den passenden Strauß
+					dafür zu finden.
+				</p>
 			</section>
 
 			<section id="heute" class="section">
 				<p class="eyebrow">Heute verfügbar</p>
-				<h2>Frische Sträuße, individuell zusammengestellt.</h2>
+				<h2>Heute im Studio</h2>
 				<p>
-					Jeder Strauß entsteht aus dem, was frisch verfügbar ist, und aus dem,
-					was er ausdrücken soll: Dankbarkeit, Nähe, Freude, Versöhnung oder
-					einfach Aufmerksamkeit.
+					Frisch gebundene Sträuße, die heute im Laden verfügbar sind. Jedes
+					Stück ist handgemacht und nur einmal da.
 				</p>
+				<p class="note">Für aktuelle Verfügbarkeit schreiben Sie uns gerne direkt.</p>
+				<a class="button" href={instagramUrl}>Auf Instagram ansehen</a>
 			</section>
 
 			<section id="ueber-uns" class="section">
 				<p class="eyebrow">Über uns</p>
-				<h2>Wir beginnen nicht mit Blumen. Wir beginnen mit der Geschichte.</h2>
+				<h2>Zwei Schwestern. Ein Studio. Viele Geschichten.</h2>
 				<p>
-					Ein Mensch kommt nicht nur wegen eines Straußes. Er kommt mit einem
-					Anlass, einer Beziehung und einem Gefühl. Unsere Aufgabe ist es, dieses
-					Gefühl ohne Verlust sichtbar zu machen.
+					Sisters Studio – Blumen Kassel ist eine moderne Blumenwerkstatt in
+					Kassel. Wir sind zwei Schwestern und gestalten Sträuße, die nicht wie
+					Massenware wirken, sondern wie ein persönlicher Geschenk­moment.
+				</p>
+				<p>
+					Wir beginnen nicht mit der Frage: „Welche Blumen möchten Sie?“<br />
+					Wir beginnen mit der Frage: „Für wen ist dieser Strauß?“
+				</p>
+				<p>
+					Denn für uns ist ein Blumenstrauß nicht nur ein Produkt. Er ist eine
+					Botschaft zwischen zwei Menschen.
 				</p>
 			</section>
 
 			<section class="section">
-				<p class="eyebrow">Warum Blumen Kassel</p>
-				<h2>Der Kunde ist der Hauptcharakter. Wir sind der Begleiter.</h2>
+				<p class="eyebrow">Warum Sisters Studio</p>
+				<h2>Warum Menschen zu uns kommen</h2>
 				<p>
-					Blumen Kassel steht für ruhige Beratung, handwerkliche Gestaltung und
-					echtes Interesse daran, was nach der Übergabe passiert.
+					Sie kommen nicht einfach, um Blumen zu kaufen.<br />
+					Sie kommen, weil sie etwas sagen möchten.
+				</p>
+				<p>Vielleicht:</p>
+				<ul class="quote-list">
+					<li>„Ich liebe dich.“</li>
+					<li>„Danke.“</li>
+					<li>„Es tut mir leid.“</li>
+					<li>„Ich denke an dich.“</li>
+					<li>„Dieser Tag soll besonders sein.“</li>
+				</ul>
+				<p>Wir helfen dabei, diesem Gefühl eine Form zu geben.</p>
+			</section>
+
+			<section class="section promise">
+				<p class="eyebrow">Unser Versprechen</p>
+				<h2>Unser Versprechen</h2>
+				<p>Wir möchten, dass Sie mit einem sicheren Gefühl gehen:</p>
+				<p class="statement">„Genau das wollte ich sagen.“</p>
+				<p>
+					Ein Strauß ist für uns erst dann richtig, wenn er zum Menschen, zum
+					Moment und zur Botschaft passt.
+				</p>
+			</section>
+
+			<section class="section moments">
+				<p class="eyebrow">Für welche Momente</p>
+				<h2>Für Momente, die in Erinnerung bleiben</h2>
+				<p>Wir gestalten Sträuße für:</p>
+				<ul class="moment-list">
+					<li>Geburtstage</li>
+					<li>Liebe &amp; Romantik</li>
+					<li>Dankbarkeit</li>
+					<li>Entschuldigungen</li>
+					<li>Hochzeiten</li>
+					<li>besondere Überraschungen</li>
+					<li>kleine Gesten im Alltag</li>
+					<li>persönliche Anlässe, die keine Kategorie brauchen</li>
+				</ul>
+			</section>
+
+			<section class="section compass">
+				<p class="eyebrow">Unser Kompass</p>
+				<h2>Unser Kompass</h2>
+				<p>Vor jeder Entscheidung fragen wir uns:</p>
+				<p class="statement">Hilft das, ein Gefühl ohne Verluste weiterzugeben?</p>
+				<p>
+					Wenn ja, ist es der richtige Weg.
+				</p>
+				<p>
+					Diese Idee prägt unsere Beratung, unsere Gestaltung, unsere Verpackung
+					und unseren Umgang mit Kunden.
+				</p>
+			</section>
+
+			<section class="section philosophy">
+				<p class="eyebrow">Wofür wir stehen</p>
+				<h2>Wofür wir stehen</h2>
+				<p>
+					Wir glauben, dass Menschen nicht einfach Blumen kaufen.<br />
+					Sie möchten etwas ausdrücken.
+				</p>
+				<p>
+					Manchmal Liebe.<br />
+					Manchmal Dankbarkeit.<br />
+					Manchmal Nähe.<br />
+					Manchmal etwas, wofür Worte nicht reichen.
+				</p>
+				<p>Unsere Aufgabe ist es, diesem Gefühl eine Form zu geben.</p>
+				<p>
+					Darum beginnt bei uns jeder Strauß mit dem Menschen, für den er gedacht
+					ist.
 				</p>
 			</section>
 
 			<section class="section">
 				<p class="eyebrow">Instagram</p>
-				<h2>Neue Arbeiten und aktuelle Eindrücke.</h2>
+				<h2>Aktuelle Arbeiten</h2>
 				<p>
-					Bald zeigen wir hier aktuelle Sträuße, saisonale Farben und Einblicke
-					aus der Werkstatt.
+					Viele unserer Sträuße entstehen nur einmal. Auf Instagram zeigen wir
+					aktuelle Arbeiten, Einblicke aus dem Studio und Blumen, die gerade
+					verfügbar sind.
 				</p>
-				<p>
-					<a href={instagramUrl}>@blumen.kassel auf Instagram</a>
-				</p>
+				<a class="button" href={instagramUrl}>Instagram öffnen</a>
 			</section>
 
 			<section id="kontakt" class="section contact">
 				<p class="eyebrow">Kontakt</p>
-				<h2>Erzähl uns, was der Strauß sagen soll.</h2>
+				<h2>Erzählen Sie uns Ihre Geschichte</h2>
 				<p>
-					Für individuelle Anfragen in Kassel erreichst du uns per Telefon oder
-					WhatsApp unter <a href={`tel:${phoneNumber}`}>{phoneDisplay}</a>.
+					Sie möchten einen Strauß bestellen oder sich beraten lassen?<br />
+					Schreiben Sie uns, rufen Sie uns an oder besuchen Sie uns direkt im
+					Studio.
 				</p>
+				<address>
+					Sisters Studio – Blumen Kassel<br />
+					Wilhelmshöher Allee 69<br />
+					34121 Kassel, Deutschland
+				</address>
 				<p>
-					Wilhelmshöher Allee 69, 34121 Kassel · Montag bis Freitag, 10:00-18:00
+					<a href={`tel:${phoneNumber}`}>{phoneDisplay}</a>
 				</p>
-				<p>
-					<a href={whatsappUrl}>WhatsApp öffnen</a>
-				</p>
+				<div class="actions">
+					<a class="button" href={whatsappUrl}>WhatsApp schreiben</a>
+					<a class="button button-secondary" href={routeUrl}>Route öffnen</a>
+				</div>
 			</section>
 		</main>
 
 		<footer class="footer">
-			<p>© 2026 Blumen Kassel</p>
+			<p>Sisters Studio – Blumen Kassel</p>
+			<p>Handgebundene Blumensträuße in Kassel.</p>
+			<nav aria-label="Footer Navigation">
+				<a href="/">Start</a>
+				<a href="#heute">Aktuelle Sträuße</a>
+				<a href="#ueber-uns">Über uns</a>
+				<a href="#kontakt">Kontakt</a>
+				<a href={instagramUrl}>Instagram</a>
+				<a href="/impressum/">Impressum</a>
+				<a href="/datenschutz/">Datenschutz</a>
+			</nav>
 		</footer>
 	</body>
 </html>
@@ -200,7 +311,7 @@ const floristSchema = {
 		display: grid;
 		align-content: center;
 		padding: 48px clamp(20px, 8vw, 120px);
-		max-width: 980px;
+		max-width: 1040px;
 	}
 
 	.eyebrow {
@@ -213,7 +324,9 @@ const floristSchema = {
 
 	h1,
 	h2,
-	p {
+	p,
+	li,
+	address {
 		letter-spacing: 0;
 	}
 
@@ -221,7 +334,7 @@ const floristSchema = {
 		margin: 0;
 		font-size: clamp(44px, 8vw, 96px);
 		line-height: 0.95;
-		max-width: 920px;
+		max-width: 980px;
 	}
 
 	h2 {
@@ -231,15 +344,28 @@ const floristSchema = {
 		max-width: 820px;
 	}
 
-	p {
+	p,
+	li,
+	address {
 		font-size: 18px;
 		line-height: 1.7;
 		max-width: 720px;
 	}
 
+	address {
+		font-style: normal;
+		color: #4f4a43;
+	}
+
 	.hero-text {
 		margin: 28px 0 36px;
 		color: #4f4a43;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
 	}
 
 	.button {
@@ -250,13 +376,48 @@ const floristSchema = {
 		font-weight: 700;
 	}
 
+	.button-secondary {
+		background: transparent;
+		color: #4f4a43;
+		border-color: #b8afa2;
+	}
+
 	.section {
 		padding: 96px clamp(20px, 8vw, 120px);
 		border-top: 1px solid #ded8cf;
 	}
 
-	.section p:not(.eyebrow) {
+	.section p:not(.eyebrow),
+	.section li {
 		color: #4f4a43;
+	}
+
+	.note {
+		font-weight: 700;
+	}
+
+	.quote-list,
+	.moment-list {
+		padding-left: 20px;
+	}
+
+	.quote-list {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	.statement {
+		color: #1d1b18 !important;
+		font-size: clamp(24px, 4vw, 40px);
+		line-height: 1.2;
+		font-weight: 700;
+	}
+
+	.intro,
+	.promise,
+	.compass,
+	.philosophy {
+		background: #f1ece3;
 	}
 
 	.contact {
@@ -266,6 +427,16 @@ const floristSchema = {
 	.footer {
 		padding: 32px clamp(20px, 5vw, 72px);
 		color: #6f675c;
+	}
+
+	.footer p {
+		margin: 0 0 8px;
+		font-size: 16px;
+	}
+
+	.footer nav {
+		flex-wrap: wrap;
+		margin-top: 18px;
 	}
 
 	@media (max-width: 720px) {
@@ -283,4 +454,3 @@ const floristSchema = {
 		}
 	}
 </style>
-
