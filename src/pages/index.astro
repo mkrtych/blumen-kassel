@@ -224,7 +224,14 @@ const floristSchema = {
 					aktuelle Arbeiten, Einblicke aus dem Studio und Blumen, die gerade
 					verfügbar sind.
 				</p>
-				<a class="button" href={instagramUrl}>Instagram öffnen</a>
+				<a class="instagram-cta" href={instagramUrl} aria-label="Instagram öffnen">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+						<circle cx="12" cy="12" r="4"></circle>
+						<circle cx="17.2" cy="6.8" r="1"></circle>
+					</svg>
+					<span>Instagram öffnen</span>
+				</a>
 			</section>
 
 			<section id="kontakt" class="section contact">
@@ -1257,5 +1264,29 @@ const floristSchema = {
 
 	.contact .actions {
 		display: none;
+	}
+
+	/* Instagram CTA polish */
+	.instagram-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		margin-top: 8px;
+		color: #1d1b18;
+		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+		font-size: 14px;
+		font-weight: 300;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.instagram-cta svg {
+		width: 18px;
+		height: 18px;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.45;
 	}
 </style>

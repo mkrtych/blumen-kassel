@@ -597,9 +597,9 @@ const productMessage = (product: FlowerProduct) => {
 		justify-content: center;
 		gap: 7px;
 		width: fit-content;
-		min-height: 28px;
+		min-height: 32px;
 		margin-top: auto;
-		padding: 0;
+		padding: 3px 0 2px;
 		background: transparent;
 		border: 0;
 		border-radius: 0;
@@ -607,13 +607,15 @@ const productMessage = (product: FlowerProduct) => {
 		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 		font-size: 13px;
 		font-weight: 300;
-		line-height: 1;
+		line-height: 1.2;
 		text-transform: none;
 	}
 
 	.card-action svg {
 		width: 16px;
 		height: 16px;
+		flex: 0 0 16px;
+		display: block;
 		fill: none;
 		stroke: currentColor;
 		stroke-linecap: round;
