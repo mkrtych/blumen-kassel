@@ -1,5 +1,5 @@
 ﻿---
-import { authorBouquets, classicFlowers } from "../data/bouquets";
+import { authorBouquets, roseProducts, seasonalFlowers, type FlowerProduct } from "../data/bouquets";
 
 type Locale = "de" | "ru";
 
@@ -12,46 +12,46 @@ const labels = {
 	de: {
 		eyebrow: "Heute verfügbar",
 		title: "Heute im Studio",
+		introTitle: "Blumen, die sagen, was Worte manchmal nicht können.",
 		intro:
-			"Frisch gebundene Sträuße und klassische Blumen, die heute im Studio verfügbar sind.",
-		authorButton: "Autorensträuße",
-		classicButton: "Klassische Blumen",
+			"Ob Geburtstag, Liebe, Dankbarkeit, Entschuldigung oder ein schöner Moment zwischendurch: hier finden Sie Sträuße und Blumen, die heute im Studio verfügbar sind.",
 		authorTitle: "Autorensträuße",
 		authorText:
 			"Einmalige Sträuße, die heute von Hand gebunden wurden. Verkauftes bleibt bis Tagesende sichtbar und kann als Inspiration dienen.",
-		classicTitle: "Klassische Blumen",
-		classicText:
-			"Klare Auswahl für Rosen, Chrysanthemen und andere Blumen nach Stückzahl. Für aktuelle Verfügbarkeit schreiben Sie uns direkt.",
-		available: "Heute verfügbar",
+		roseTitle: "Rosen",
+		roseText: "Klassische Rosen nach Stückzahl. Die aktuelle Auswahl kann je nach Tagesbestand variieren.",
+		seasonalTitle: "Saisonale Blumen",
+		seasonalText: "Frische Blumen der Saison für kleine Gesten, Ergänzungen oder eigene Zusammenstellungen.",
+		available: "Verfügbar",
 		reserved: "Reserviert",
 		sold: "Verkauft",
-		limited: "Begrenzt verfügbar",
+		limited: "Begrenzt",
 		unavailable: "Nicht verfügbar",
-		ask: "Per WhatsApp anfragen",
-		askSimilar: "Ähnlichen Strauß anfragen",
-		askClassic: "Verfügbarkeit anfragen",
+		ask: "WhatsApp fragen",
+		askSimilar: "WhatsApp fragen",
+		openDetails: "Details ansehen",
 	},
 	ru: {
 		eyebrow: "Сегодня в наличии",
 		title: "Сегодня в студии",
+		introTitle: "Иногда один букет говорит больше, чем длинные слова.",
 		intro:
-			"Свежие авторские букеты и классические цветы, которые сегодня доступны в студии.",
-		authorButton: "Авторские букеты",
-		classicButton: "Классические цветы",
+			"Любовь, благодарность, день рождения, извинение или желание сделать чей-то день светлее: здесь собраны букеты и цветы, которые сегодня доступны в студии.",
 		authorTitle: "Авторские букеты",
 		authorText:
 			"Уникальные букеты, собранные сегодня вручную. Проданные букеты остаются видимыми до конца дня и могут служить вдохновением.",
-		classicTitle: "Классические цветы",
-		classicText:
-			"Понятный выбор роз, хризантем и других цветов по количеству. Чтобы узнать наличие прямо сейчас, напишите нам.",
-		available: "Сегодня в наличии",
-		reserved: "Зарезервировано",
+		roseTitle: "Розы",
+		roseText: "Классические розы по количеству. Актуальный выбор зависит от наличия в студии.",
+		seasonalTitle: "Сезонные цветы",
+		seasonalText: "Свежие сезонные цветы для небольших жестов, дополнений или индивидуальных композиций.",
+		available: "В наличии",
+		reserved: "Резерв",
 		sold: "Продано",
-		limited: "Ограниченно в наличии",
+		limited: "Ограниченно",
 		unavailable: "Нет в наличии",
-		ask: "Спросить в WhatsApp",
-		askSimilar: "Спросить похожий букет",
-		askClassic: "Уточнить наличие",
+		ask: "WhatsApp fragen",
+		askSimilar: "WhatsApp fragen",
+		openDetails: "Смотреть детали",
 	},
 }[lang];
 
@@ -71,44 +71,42 @@ const bouquetMessage = (bouquet: (typeof authorBouquets)[number]) => {
 	const url = `${siteUrl}${pagePath}#${bouquet.id}`;
 	if (lang === "ru") {
 		return bouquet.status === "sold"
-			? `Здравствуйте, этот букет уже продан. Можно ли сделать похожий? ${url}`
-			: `Здравствуйте, меня интересует этот букет: ${url} Он сегодня ещё в наличии?`;
+			? `Здравствуйте, букет ${bouquet.code} уже продан. Можно ли сделать похожий? ${url}`
+			: `Здравствуйте, меня интересует букет ${bouquet.code}: ${url} Он сегодня ещё в наличии?`;
 	}
 
 	return bouquet.status === "sold"
-		? `Hallo Sisters Studio, dieser Strauß ist bereits verkauft. Können Sie etwas Ähnliches gestalten? ${url}`
-		: `Hallo Sisters Studio, ich interessiere mich für diesen Strauß: ${url} Ist er heute noch verfügbar?`;
+		? `Hallo Sisters Studio, der Strauß ${bouquet.code} ist bereits verkauft. Können Sie etwas Ähnliches gestalten? ${url}`
+		: `Hallo Sisters Studio, ich interessiere mich für Strauß ${bouquet.code}: ${url} Ist er heute noch verfügbar?`;
 };
 
-const classicMessage = (flower: (typeof classicFlowers)[number]) => {
+const productMessage = (product: FlowerProduct) => {
 	if (lang === "ru") {
-		return `Здравствуйте, меня интересуют ${flower.title.ru}. Что сегодня есть в наличии?`;
+		return `Здравствуйте, меня интересует: ${product.title.ru}. Что сегодня есть в наличии?`;
 	}
 
-	return `Hallo Sisters Studio, ich interessiere mich für ${flower.title.de}. Was ist heute verfügbar?`;
+	return `Hallo Sisters Studio, ich interessiere mich für ${product.title.de}. Was ist heute verfügbar?`;
 };
 ---
 
 <section id="heute" class="section showcase-section">
-	<p class="eyebrow">{labels.eyebrow}</p>
-	<h2>{labels.title}</h2>
-	<p>{labels.intro}</p>
-
-	<div class="showcase-tabs" aria-label={labels.title}>
-		<a href="#author-bouquets">{labels.authorButton}</a>
-		<a href="#classic-flowers">{labels.classicButton}</a>
+	<div class="showcase-intro">
+		<p class="eyebrow">{labels.eyebrow}</p>
+		<h2>{labels.introTitle}</h2>
+		<p>{labels.intro}</p>
 	</div>
 
-	<div id="author-bouquets" class="showcase-group">
+	<div id="author-bouquets" class="showcase-group snap-panel">
 		<div class="showcase-heading">
+			<p class="eyebrow">{labels.title}</p>
 			<h3>{labels.authorTitle}</h3>
 			<p>{labels.authorText}</p>
 		</div>
 
-		<div class="bouquet-rail" aria-label={labels.authorTitle}>
+		<div class="product-rail author-rail" aria-label={labels.authorTitle}>
 			{authorBouquets.map((bouquet) => (
-				<article id={bouquet.id} class={`bouquet-card status-${bouquet.status}`}>
-					<a class="card-anchor" href={`#${bouquet.id}`} aria-label={bouquet.title[lang]}>
+				<article id={bouquet.id} class={`product-card author-card status-${bouquet.status}`}>
+					<a class="card-anchor" href={`#${bouquet.id}`} aria-label={`${labels.openDetails}: ${bouquet.code}`}>
 						<img src={bouquet.image} alt={bouquet.imageAlt[lang]} loading="lazy" />
 					</a>
 					<div class="card-body">
@@ -116,8 +114,7 @@ const classicMessage = (flower: (typeof classicFlowers)[number]) => {
 							<span class="status-pill">{statusLabels[bouquet.status]}</span>
 							<span class="price">{bouquet.price}</span>
 						</div>
-						<h4>{bouquet.title[lang]}</h4>
-						<p>{bouquet.description[lang]}</p>
+						<h4>{bouquet.code}</h4>
 						<a class="card-action" href={buildWhatsAppUrl(bouquetMessage(bouquet))}>
 							{bouquet.status === "sold" ? labels.askSimilar : labels.ask}
 						</a>
@@ -127,29 +124,61 @@ const classicMessage = (flower: (typeof classicFlowers)[number]) => {
 		</div>
 	</div>
 
-	<div id="classic-flowers" class="showcase-group classic-group">
+	<div id="classic-flowers" class="showcase-group snap-panel">
 		<div class="showcase-heading">
-			<h3>{labels.classicTitle}</h3>
-			<p>{labels.classicText}</p>
+			<h3>{labels.roseTitle}</h3>
+			<p>{labels.roseText}</p>
 		</div>
 
-		<div class="classic-grid" aria-label={labels.classicTitle}>
-			{classicFlowers.map((flower) => (
-				<article id={flower.id} class={`classic-card status-${flower.status}`}>
-					<div>
-						<span class="status-pill">{statusLabels[flower.status]}</span>
-						<h4>{flower.title[lang]}</h4>
-						<p>{flower.description[lang]}</p>
+		<div class="product-rail" aria-label={labels.roseTitle}>
+			{roseProducts.map((product) => (
+				<article id={product.id} class={`product-card flower-card status-${product.status}`}>
+					<img src={product.image} alt={product.imageAlt[lang]} loading="lazy" />
+					<div class="card-body">
+						<div class="card-meta">
+							<span class="status-pill">{statusLabels[product.status]}</span>
+						</div>
+						<h4>{product.title[lang]}</h4>
+						<ul>
+							{product.variants.map((variant) => (
+								<li>
+									<span>{variant.label[lang]}</span>
+									<strong>{variant.price}</strong>
+								</li>
+							))}
+						</ul>
+						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>{labels.ask}</a>
 					</div>
-					<ul>
-						{flower.variants.map((variant) => (
-							<li>
-								<span>{variant.label[lang]}</span>
-								<strong>{variant.price}</strong>
-							</li>
-						))}
-					</ul>
-					<a class="card-action" href={buildWhatsAppUrl(classicMessage(flower))}>{labels.askClassic}</a>
+				</article>
+			))}
+		</div>
+	</div>
+
+	<div id="seasonal-flowers" class="showcase-group snap-panel">
+		<div class="showcase-heading">
+			<h3>{labels.seasonalTitle}</h3>
+			<p>{labels.seasonalText}</p>
+		</div>
+
+		<div class="product-rail" aria-label={labels.seasonalTitle}>
+			{seasonalFlowers.map((product) => (
+				<article id={product.id} class={`product-card flower-card status-${product.status}`}>
+					<img src={product.image} alt={product.imageAlt[lang]} loading="lazy" />
+					<div class="card-body">
+						<div class="card-meta">
+							<span class="status-pill">{statusLabels[product.status]}</span>
+						</div>
+						<h4>{product.title[lang]}</h4>
+						<ul>
+							{product.variants.map((variant) => (
+								<li>
+									<span>{variant.label[lang]}</span>
+									<strong>{variant.price}</strong>
+								</li>
+							))}
+						</ul>
+						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>{labels.ask}</a>
+					</div>
 				</article>
 			))}
 		</div>
@@ -160,108 +189,107 @@ const classicMessage = (flower: (typeof classicFlowers)[number]) => {
 	.showcase-section {
 		background: #fbf8f2;
 		border-top: 1px solid #ded8cf;
-		padding: 72px clamp(20px, 8vw, 120px);
+		padding: 40px clamp(16px, 6vw, 96px) 64px;
+		scroll-snap-align: start;
+	}
+
+	.showcase-intro {
+		max-width: 860px;
+		margin-bottom: 30px;
 	}
 
 	.eyebrow {
-		margin: 0 0 16px;
+		margin: 0 0 10px;
 		color: #7b6f5f;
-		font-size: 14px;
-		font-weight: 700;
+		font-size: 12px;
+		font-weight: 800;
 		letter-spacing: 0;
 		text-transform: uppercase;
 	}
 
 	.showcase-section h2 {
-		margin: 0 0 20px;
-		font-size: clamp(32px, 5vw, 56px);
+		margin: 0 0 14px;
+		font-size: clamp(30px, 5vw, 58px);
 		letter-spacing: 0;
 		line-height: 1;
-		max-width: 820px;
+		max-width: 840px;
+		text-transform: uppercase;
 	}
 
 	.showcase-section p {
 		color: #4f4a43;
-		font-size: 18px;
+		font-size: 17px;
 		letter-spacing: 0;
-		line-height: 1.7;
-		max-width: 720px;
+		line-height: 1.55;
+		max-width: 760px;
 	}
 
-	.showcase-tabs {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px;
-		margin: 32px 0 56px;
+	.showcase-group {
+		margin-top: 54px;
+		scroll-margin-top: 72px;
 	}
 
-	.showcase-tabs a,
-	.card-action {
-		border: 1px solid #1d1b18;
-		color: #1d1b18;
-		font-weight: 700;
-		text-decoration: none;
-	}
-
-	.showcase-tabs a {
-		padding: 14px 18px;
-	}
-
-	.showcase-heading {
-		margin-bottom: 24px;
-	}
-
-	.showcase-heading h3 {
-		margin: 0 0 12px;
-		font-size: clamp(28px, 4vw, 44px);
-		letter-spacing: 0;
-		line-height: 1;
-	}
-
-	.bouquet-rail {
-		display: grid;
-		grid-auto-columns: minmax(260px, 82vw);
-		grid-auto-flow: column;
-		gap: 18px;
-		overflow-x: auto;
-		padding: 4px 20px 24px 0;
-		scroll-snap-type: x mandatory;
-	}
-
-	.bouquet-card,
-	.classic-card {
-		background: #fffdf8;
-		border: 1px solid #ded8cf;
-		border-radius: 8px;
-		overflow: hidden;
-		scroll-margin-top: 96px;
-	}
-
-	.bouquet-card {
+	.snap-panel {
 		scroll-snap-align: start;
 	}
 
-	.bouquet-card:target,
-	.classic-card:target {
+	.showcase-heading {
+		margin-bottom: 18px;
+	}
+
+	.showcase-heading h3 {
+		margin: 0 0 10px;
+		font-size: clamp(26px, 4vw, 44px);
+		letter-spacing: 0;
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	.product-rail {
+		display: grid;
+		grid-auto-columns: minmax(220px, 72vw);
+		grid-auto-flow: column;
+		gap: 14px;
+		overflow-x: auto;
+		padding: 2px 18px 22px 0;
+		scroll-padding-left: 2px;
+		scroll-snap-type: x mandatory;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.product-card {
+		background: #fffdf8;
+		border: 1px solid #e1dacf;
+		border-radius: 8px;
+		overflow: hidden;
+		scroll-margin-top: 92px;
+		scroll-snap-align: start;
+	}
+
+	.product-card:target {
 		border-color: #7a8b66;
 		box-shadow: 0 0 0 3px rgba(122, 139, 102, 0.18);
 	}
 
-	.bouquet-card img {
-		aspect-ratio: 1 / 1;
+	.product-card img {
 		display: block;
 		width: 100%;
-		height: auto;
+		aspect-ratio: 4 / 5;
 		object-fit: cover;
 	}
 
-	.card-body,
-	.classic-card {
-		padding: 18px;
+	.flower-card img {
+		aspect-ratio: 1 / 1;
+	}
+
+	.card-body {
+		display: grid;
+		gap: 12px;
+		padding: 14px;
 	}
 
 	.card-meta,
-	.classic-card li {
+	.product-card li {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -273,10 +301,11 @@ const classicMessage = (flower: (typeof classicFlowers)[number]) => {
 		width: fit-content;
 		background: #edf1e6;
 		color: #46573a;
-		font-size: 13px;
-		font-weight: 700;
-		padding: 6px 10px;
+		font-size: 12px;
+		font-weight: 800;
+		padding: 5px 8px;
 		border-radius: 999px;
+		text-transform: uppercase;
 	}
 
 	.status-sold .status-pill,
@@ -292,62 +321,58 @@ const classicMessage = (flower: (typeof classicFlowers)[number]) => {
 	}
 
 	.price {
-		font-weight: 800;
+		font-weight: 900;
 	}
 
-	.bouquet-card h4,
-	.classic-card h4 {
-		margin: 14px 0 8px;
+	.product-card h4 {
+		margin: 0;
 		font-size: 24px;
 		letter-spacing: 0;
-		line-height: 1.1;
+		line-height: 1;
+		text-transform: uppercase;
 	}
 
-	.bouquet-card p,
-	.classic-card p {
-		font-size: 16px;
-		line-height: 1.55;
-	}
-
-	.card-action {
-		display: inline-flex;
-		margin-top: 12px;
-		padding: 12px 14px;
-	}
-
-	.classic-group {
-		margin-top: 72px;
-	}
-
-	.classic-grid {
-		display: grid;
-		gap: 16px;
-	}
-
-	.classic-card ul {
+	.product-card ul {
 		list-style: none;
-		margin: 18px 0 0;
+		margin: 0;
 		padding: 0;
 	}
 
-	.classic-card li {
+	.product-card li {
 		border-top: 1px solid #e8e1d6;
-		padding: 10px 0;
-		font-size: 16px;
+		padding: 9px 0;
+		font-size: 15px;
+	}
+
+	.card-action {
+		display: grid;
+		min-height: 42px;
+		place-items: center;
+		width: 100%;
+		background: #1d1b18;
+		border-radius: 8px;
+		color: #fffdf8;
+		font-size: 14px;
+		font-weight: 800;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
 	}
 
 	@media (min-width: 760px) {
-		.bouquet-rail {
-			grid-auto-flow: initial;
-			grid-auto-columns: initial;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			overflow: visible;
-			padding-right: 0;
+		.showcase-section {
+			padding-top: 56px;
 		}
 
-		.classic-grid {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
+		.product-rail {
+			grid-auto-columns: minmax(240px, 24vw);
+			gap: 18px;
+		}
+	}
+
+	@media (min-width: 1180px) {
+		.product-rail {
+			grid-auto-columns: minmax(250px, 1fr);
 		}
 	}
 </style>
-
