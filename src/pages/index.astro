@@ -809,4 +809,125 @@ const floristSchema = {
 			line-height: 1.14;
 		}
 	}
+	/* Editorial rhythm pass */
+	:root {
+		--text-max: 640px;
+		--section-y: clamp(48px, 7vw, 84px);
+		--section-x: clamp(18px, 6vw, 96px);
+	}
+
+	.site-header {
+		padding-block: 8px;
+	}
+
+	.hero {
+		min-height: calc(100svh - 40px);
+		padding: clamp(54px, 10vh, 112px) var(--section-x) clamp(34px, 7vh, 72px);
+	}
+
+	.hero-copy {
+		max-width: min(540px, 100%);
+	}
+
+	h1,
+	h2,
+	.statement {
+		font-weight: 500;
+		text-transform: none;
+	}
+
+	h1 {
+		max-width: 600px;
+		font-size: clamp(38px, 5vw, 64px);
+		line-height: 1.04;
+	}
+
+	h2 {
+		max-width: var(--text-max);
+		font-size: clamp(28px, 3.1vw, 40px);
+		line-height: 1.12;
+		margin-bottom: 16px;
+	}
+
+	.statement {
+		max-width: var(--text-max);
+		font-size: clamp(22px, 2.4vw, 30px);
+		line-height: 1.25;
+	}
+
+	.hero-text,
+	.section p:not(.eyebrow),
+	.section li,
+	address {
+		max-width: var(--text-max);
+		font-size: clamp(16px, 1.25vw, 18px);
+		line-height: 1.62;
+	}
+
+	.hero-text {
+		max-width: 520px;
+		margin-top: 18px;
+	}
+
+	.eyebrow {
+		margin-bottom: 10px;
+		font-size: 12px;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	.section {
+		padding: var(--section-y) var(--section-x);
+	}
+
+	#ueber-uns,
+	.promise,
+	.moments,
+	.compass,
+	.philosophy,
+	.contact {
+		padding-top: var(--section-y);
+		padding-bottom: var(--section-y);
+	}
+
+	.quote-list,
+	.moment-list {
+		margin-top: 14px;
+		margin-bottom: 0;
+	}
+
+	.footer {
+		padding-block: 16px;
+	}
+
+	@media (min-width: 860px) {
+		.hero {
+			min-height: calc(100vh - 40px);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.hero {
+			min-height: calc(100svh - 64px);
+			padding-top: 42px;
+		}
+
+		h1 {
+			max-width: 360px;
+			font-size: clamp(34px, 9vw, 44px);
+			line-height: 1.06;
+		}
+
+		h2 {
+			font-size: clamp(26px, 7vw, 34px);
+		}
+
+		.hero-text,
+		.section p:not(.eyebrow),
+		.section li,
+		address {
+			font-size: 16px;
+			line-height: 1.6;
+		}
+	}
 </style>
