@@ -27,8 +27,8 @@ const labels = {
 		sold: "Verkauft",
 		limited: "Begrenzt",
 		unavailable: "Nicht verfügbar",
-		ask: "WhatsApp fragen",
-		askSimilar: "WhatsApp fragen",
+		ask: "Fragen",
+		askSimilar: "Fragen",
 		openDetails: "Details ansehen",
 	},
 	ru: {
@@ -49,8 +49,8 @@ const labels = {
 		sold: "Продано",
 		limited: "Ограниченно",
 		unavailable: "Нет в наличии",
-		ask: "WhatsApp fragen",
-		askSimilar: "WhatsApp fragen",
+		ask: "Спросить",
+		askSimilar: "Спросить",
 		openDetails: "Смотреть детали",
 	},
 }[lang];
@@ -116,7 +116,11 @@ const productMessage = (product: FlowerProduct) => {
 						</div>
 						<h4>{bouquet.code}</h4>
 						<a class="card-action" href={buildWhatsAppUrl(bouquetMessage(bouquet))}>
-							{bouquet.status === "sold" ? labels.askSimilar : labels.ask}
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M5.4 18.6 6.3 15A7.4 7.4 0 1 1 9 17.7l-3.6.9Z"></path>
+								<path d="M9.2 8.7c.2 2.7 1.7 4.8 4.4 6 .6.3 1.2-.3 1.5-.9"></path>
+							</svg>
+							<span>{bouquet.status === "sold" ? labels.askSimilar : labels.ask}</span>
 						</a>
 					</div>
 				</article>
@@ -147,7 +151,13 @@ const productMessage = (product: FlowerProduct) => {
 								</li>
 							))}
 						</ul>
-						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>{labels.ask}</a>
+						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M5.4 18.6 6.3 15A7.4 7.4 0 1 1 9 17.7l-3.6.9Z"></path>
+								<path d="M9.2 8.7c.2 2.7 1.7 4.8 4.4 6 .6.3 1.2-.3 1.5-.9"></path>
+							</svg>
+							<span>{labels.ask}</span>
+						</a>
 					</div>
 				</article>
 			))}
@@ -177,7 +187,13 @@ const productMessage = (product: FlowerProduct) => {
 								</li>
 							))}
 						</ul>
-						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>{labels.ask}</a>
+						<a class="card-action" href={buildWhatsAppUrl(productMessage(product))}>
+							<svg viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M5.4 18.6 6.3 15A7.4 7.4 0 1 1 9 17.7l-3.6.9Z"></path>
+								<path d="M9.2 8.7c.2 2.7 1.7 4.8 4.4 6 .6.3 1.2-.3 1.5-.9"></path>
+							</svg>
+							<span>{labels.ask}</span>
+						</a>
 					</div>
 				</article>
 			))}
@@ -559,4 +575,49 @@ const productMessage = (product: FlowerProduct) => {
 			font-size: 15px;
 			line-height: 1.58;
 		}
-	}</style>
+	}
+	/* Final card CTA polish */
+	.product-card {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+
+	.card-body {
+		height: 100%;
+		grid-template-rows: auto auto 1fr auto;
+	}
+
+	.author-card .card-body {
+		grid-template-rows: auto 1fr auto;
+	}
+
+	.card-action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 7px;
+		width: fit-content;
+		min-height: 28px;
+		margin-top: auto;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		border-radius: 0;
+		color: #1d1b18;
+		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+		font-size: 13px;
+		font-weight: 300;
+		line-height: 1;
+		text-transform: none;
+	}
+
+	.card-action svg {
+		width: 16px;
+		height: 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.45;
+	}
+</style>

@@ -238,19 +238,31 @@ const floristSchema = {
 					Позвоните нам, напишите в WhatsApp или приходите в студию — мы всегда рады
 					помочь.
 				</p>
-				<address>
-					Sisters Studio – Blumen Kassel<br />
-					Wilhelmshöher Allee 69<br />
-					34121 Kassel
+				<address class="contact-address">
+					<a href={routeUrl}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M12 21s6-5.1 6-11a6 6 0 0 0-12 0c0 5.9 6 11 6 11Z"></path>
+							<circle cx="12" cy="10" r="2"></circle>
+						</svg>
+						<span>Sisters Studio – Blumen Kassel<br />Wilhelmshöher Allee 69<br />34121 Kassel</span>
+					</a>
 				</address>
-				<p>
-					<a href={`tel:${phoneNumber}`}>☎ {phoneDisplay}</a><br />
-					<a href="mailto:kontakt@blumenkassel.de">✉ kontakt@blumenkassel.de</a>
+				<p class="contact-links">
+					<a class="contact-link" href={whatsappUrl}>
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M5.4 18.6 6.3 15A7.4 7.4 0 1 1 9 17.7l-3.6.9Z"></path>
+							<path d="M9.2 8.7c.2 2.7 1.7 4.8 4.4 6 .6.3 1.2-.3 1.5-.9"></path>
+						</svg>
+						<span>{phoneDisplay}</span>
+					</a>
+					<a class="contact-link" href="mailto:kontakt@blumenkassel.de">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path d="M4 6h16v12H4z"></path>
+							<path d="m4 7 8 6 8-6"></path>
+						</svg>
+						<span>kontakt@blumenkassel.de</span>
+					</a>
 				</p>
-				<div class="actions">
-					<a class="button" href={whatsappUrl}>Написать в WhatsApp</a>
-					<a class="button button-secondary" href={routeUrl}>⌖ Построить маршрут</a>
-				</div>
 			</section>
 		</main>
 
@@ -1208,4 +1220,45 @@ const floristSchema = {
 			font-size: clamp(22px, 5.9vw, 27px);
 			line-height: 1.12;
 		}
-	}</style>
+	}
+	/* Final contact polish */
+	.contact-address,
+	.contact-links {
+		margin-top: 20px;
+	}
+
+	.contact-address a,
+	.contact-link {
+		display: inline-flex;
+		align-items: flex-start;
+		gap: 9px;
+		color: #1d1b18;
+		font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+		font-size: clamp(15px, 1.2vw, 16px);
+		font-weight: 300;
+		line-height: 1.55;
+		text-decoration: none;
+	}
+
+	.contact-links {
+		display: grid;
+		gap: 8px;
+	}
+
+	.contact-address svg,
+	.contact-link svg {
+		flex: 0 0 auto;
+		width: 17px;
+		height: 17px;
+		margin-top: 3px;
+		fill: none;
+		stroke: currentColor;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-width: 1.45;
+	}
+
+	.contact .actions {
+		display: none;
+	}
+</style>
