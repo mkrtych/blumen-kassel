@@ -391,4 +391,36 @@ const productMessage = (product: FlowerProduct) => {
 		font-size: clamp(16px, 1.6vw, 18px);
 		line-height: 1.58;
 	}
+	/* Softer typography pass */
+	.showcase-section h2,
+	.showcase-heading h3,
+	.product-card h4 {
+		font-weight: 600;
+		text-transform: none;
+	}
+
+	.showcase-section h2 {
+		max-width: 660px;
+		font-size: clamp(23px, 3vw, 34px);
+		line-height: 1.12;
+	}
+
+	.showcase-heading h3 {
+		font-size: clamp(22px, 2.6vw, 30px);
+		line-height: 1.12;
+	}
+
+	.showcase-section p {
+		font-size: clamp(15px, 1.35vw, 17px);
+		line-height: 1.6;
+	}
+
+	.product-card h4 {
+		font-size: 20px;
+	}
+
+	.card-action,
+	.status-pill {
+		font-weight: 700;
+	}
 </style>
