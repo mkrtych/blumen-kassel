@@ -1,5 +1,6 @@
 ﻿---
 import BouquetShowcase from "../../components/BouquetShowcase.astro";
+import MobileContactBar from "../../components/MobileContactBar.astro";
 const siteUrl = "https://blumenkassel.de";
 const canonicalUrl = `${siteUrl}/ru/`;
 const germanUrl = `${siteUrl}/`;
@@ -93,17 +94,25 @@ const floristSchema = {
 
 		<main>
 			<section class="hero">
-				<p class="eyebrow">Sisters Studio – Blumen Kassel</p>
-				<h1>Букеты, которые говорят о ваших чувствах лучше любых слов.</h1>
-				<p class="hero-text">
-					Каждый букет начинается с истории. Мы не собираем цветы по шаблону — мы
-					создаём композиции, которые помогают передать именно те чувства, которые
-					вы хотите подарить.
-				</p>
-				<div class="actions">
-					<a class="button" href="#heute">Смотреть букеты в наличии</a>
-					<a class="button button-secondary" href="#kontakt">Связаться с нами</a>
+				<div class="hero-copy">
+					<p class="eyebrow">Sisters Studio – Blumen Kassel</p>
+					<h1>Букеты, которые говорят о ваших чувствах лучше любых слов.</h1>
+					<p class="hero-text">
+						Каждый букет начинается с истории. Мы не собираем цветы по шаблону — мы
+						создаём композиции, которые помогают передать именно те чувства, которые
+						вы хотите подарить.
+					</p>
+					<div class="actions">
+						<a class="button" href="#heute">Смотреть букеты в наличии</a>
+						<a class="button button-secondary" href="#kontakt">Связаться с нами</a>
+					</div>
 				</div>
+				<figure class="hero-media">
+					<img
+						src="/images/bouquets/blush-rose-eustoma.webp"
+						alt="Авторский букет с розовыми розами и белыми цветами"
+					/>
+				</figure>
 			</section>
 
 			<section class="section intro">
@@ -247,6 +256,8 @@ const floristSchema = {
 				</div>
 			</section>
 		</main>
+
+		<MobileContactBar locale="ru" />
 
 		<footer class="footer">
 			<p>Sisters Studio – Blumen Kassel</p>
@@ -465,6 +476,79 @@ const floristSchema = {
 			min-height: 64vh;
 		}
 	}
+	/* Mobile-first visual foundation */
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		padding: 18px clamp(20px, 5vw, 72px);
+		border-bottom: 1px solid rgba(222, 216, 207, 0.72);
+		background: rgba(248, 245, 239, 0.88);
+		backdrop-filter: blur(18px);
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		align-content: initial;
+		gap: 32px;
+		min-height: calc(100svh - 74px);
+		max-width: 1280px;
+		padding: 32px clamp(20px, 7vw, 112px) 72px;
+	}
+
+	.hero-copy {
+		max-width: 760px;
+	}
+
+	.hero-media {
+		margin: 0;
+	}
+
+	.hero-media img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 8px;
+		box-shadow: 0 24px 80px rgba(29, 27, 24, 0.12);
+	}
+
+	.button {
+		border-radius: 8px;
+		background: #1d1b18;
+		color: #fffdf8;
+	}
+
+	.button-secondary {
+		background: transparent;
+		color: #4f4a43;
+	}
+
+	@media (min-width: 860px) {
+		.hero {
+			grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.72fr);
+			min-height: calc(100vh - 74px);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.site-header {
+			padding-block: 14px;
+		}
+
+		nav {
+			gap: 14px;
+		}
+
+		.hero {
+			min-height: auto;
+			padding-top: 24px;
+		}
+
+		.hero-media {
+			order: -1;
+		}
+	}
 </style>
-
-
