@@ -102,10 +102,6 @@ const floristSchema = {
 						создаём композиции, которые помогают передать именно те чувства, которые
 						вы хотите подарить.
 					</p>
-					<div class="actions">
-						<a class="button" href="#heute">Смотреть букеты в наличии</a>
-						<a class="button button-secondary" href="#kontakt">Связаться с нами</a>
-					</div>
 				</div>
 				<figure class="hero-media">
 					<picture>
@@ -714,7 +710,47 @@ const floristSchema = {
 			font-size: clamp(38px, 12vw, 64px);
 		}
 	}
+	/* Typography tune */
+	.hero-copy {
+		max-width: min(560px, 100%);
+	}
+
+	h1 {
+		max-width: 620px;
+		font-size: clamp(34px, 5.8vw, 72px);
+		line-height: 0.98;
+	}
+
+	h2 {
+		max-width: 720px;
+		font-size: clamp(26px, 3.8vw, 42px);
+		line-height: 1.05;
+	}
+
+	.statement {
+		font-size: clamp(22px, 3vw, 34px);
+	}
+
+	.hero-text {
+		max-width: 500px;
+		margin-bottom: 0;
+		font-size: clamp(15px, 1.6vw, 18px);
+	}
+
+	.section p:not(.eyebrow),
+	.section li,
+	address {
+		font-size: clamp(16px, 1.6vw, 18px);
+		line-height: 1.62;
+	}
+
+	@media (max-width: 720px) {
+		h1 {
+			font-size: clamp(32px, 10vw, 48px);
+		}
+
+		h2 {
+			font-size: clamp(25px, 8vw, 34px);
+		}
+	}
 </style>
-
-
-
