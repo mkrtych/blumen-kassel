@@ -79,7 +79,7 @@ const floristSchema = {
 
 	<body>
 		<header class="site-header">
-			<a class="brand" href="/ru/">Sisters Studio – Blumen Kassel</a>
+			<a class="brand" href="/ru/">Sisters Studio</a>
 			<nav aria-label="Основная навигация">
 				<a href="#heute">Букеты в наличии</a>
 				<a href="#ueber-uns">О нас</a>
@@ -108,21 +108,16 @@ const floristSchema = {
 					</div>
 				</div>
 				<figure class="hero-media">
-					<img
-						src="/images/bouquets/blush-rose-eustoma.webp"
-						alt="Авторский букет с розовыми розами и белыми цветами"
-					/>
+					<picture>
+						<source srcset="/images/hero/hero-mobile.webp" media="(max-width: 759px)" />
+						<img
+							src="/images/hero/hero-desktop.webp"
+							alt="Нежные розовые и белые цветы в тёплом свете"
+						/>
+					</picture>
 				</figure>
 			</section>
 
-			<section class="section intro">
-				<h2>Иногда один букет говорит больше, чем длинные слова.</h2>
-				<p>
-					Любовь, благодарность, день рождения, извинение или просто желание
-					сделать чей-то день светлее — мы поможем подобрать букет, который будет
-					говорить за вас.
-				</p>
-			</section>
 			<BouquetShowcase locale="ru" />
 
 			<section id="ueber-uns" class="section">
@@ -248,11 +243,12 @@ const floristSchema = {
 					34121 Kassel
 				</address>
 				<p>
-					<a href={`tel:${phoneNumber}`}>{phoneDisplay}</a>
+					<a href={`tel:${phoneNumber}`}>☎ {phoneDisplay}</a><br />
+					<a href="mailto:kontakt@blumenkassel.de">✉ kontakt@blumenkassel.de</a>
 				</p>
 				<div class="actions">
 					<a class="button" href={whatsappUrl}>Написать в WhatsApp</a>
-					<a class="button button-secondary" href={routeUrl}>Построить маршрут</a>
+					<a class="button button-secondary" href={routeUrl}>⌖ Построить маршрут</a>
 				</div>
 			</section>
 		</main>
@@ -551,4 +547,174 @@ const floristSchema = {
 			order: -1;
 		}
 	}
+	/* Showcase polish */
+	html {
+		scroll-behavior: smooth;
+		scroll-snap-type: y proximity;
+	}
+
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.site-header {
+		padding: 9px clamp(14px, 4vw, 42px);
+		background: rgba(248, 245, 239, 0.72);
+	}
+
+	.brand,
+	nav a,
+	.language-switch {
+		font-size: 12px;
+		font-weight: 900;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+
+	nav {
+		gap: 13px;
+	}
+
+	.hero {
+		position: relative;
+		isolation: isolate;
+		min-height: calc(100svh - 42px);
+		max-width: none;
+		padding: clamp(86px, 18vh, 190px) clamp(18px, 7vw, 112px) clamp(42px, 8vh, 92px);
+		overflow: hidden;
+	}
+
+	.hero::after {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: linear-gradient(90deg, rgba(248, 245, 239, 0.88) 0%, rgba(248, 245, 239, 0.58) 38%, rgba(248, 245, 239, 0.08) 72%);
+		content: "";
+	}
+
+	.hero-media {
+		position: absolute;
+		inset: 0;
+		z-index: -2;
+		margin: 0;
+	}
+
+	.hero-media picture,
+	.hero-media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.hero-media img {
+		aspect-ratio: auto;
+		object-fit: cover;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.hero-copy {
+		max-width: min(680px, 100%);
+	}
+
+	h1,
+	h2,
+	.statement {
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		font-size: clamp(42px, 8vw, 104px);
+		line-height: 0.92;
+	}
+
+	.hero-text {
+		max-width: 560px;
+		margin: 22px 0 26px;
+		font-size: clamp(16px, 2vw, 20px);
+		line-height: 1.5;
+	}
+
+	.button {
+		min-height: 42px;
+		padding: 11px 15px;
+		font-size: 13px;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+	.section {
+		padding: 70px clamp(18px, 7vw, 104px);
+	}
+
+	.section:not(.showcase-section) {
+		scroll-snap-align: start;
+	}
+
+	#ueber-uns,
+	.promise,
+	.moments,
+	.compass,
+	.philosophy {
+		border-top: 0;
+	}
+
+	#ueber-uns,
+	.promise,
+	.moments,
+	.compass,
+	.philosophy,
+	.contact {
+		padding-top: 52px;
+		padding-bottom: 52px;
+	}
+
+	.footer {
+		padding: 18px clamp(16px, 4vw, 42px);
+	}
+
+	.footer p {
+		font-size: 13px;
+		line-height: 1.4;
+	}
+
+	.contact .actions a,
+	.contact p a {
+		text-decoration: none;
+	}
+
+	@media (min-width: 860px) {
+		.hero {
+			display: block;
+			min-height: calc(100vh - 42px);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.site-header {
+			gap: 8px;
+			padding-block: 8px;
+		}
+
+		nav {
+			gap: 10px;
+		}
+
+		.hero {
+			min-height: calc(100svh - 80px);
+			padding-top: 72px;
+		}
+
+		.hero::after {
+			background: linear-gradient(180deg, rgba(248, 245, 239, 0.82) 0%, rgba(248, 245, 239, 0.64) 42%, rgba(248, 245, 239, 0.12) 100%);
+		}
+
+		h1 {
+			font-size: clamp(38px, 12vw, 64px);
+		}
+	}
 </style>
+
+
+

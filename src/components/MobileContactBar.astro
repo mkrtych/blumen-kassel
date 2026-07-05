@@ -2,7 +2,6 @@
 type Locale = "de" | "ru";
 
 const { locale = "de" } = Astro.props as { locale?: Locale };
-const phoneNumber = "+491602233298";
 const whatsappUrl = "https://wa.me/491602233298";
 const routeUrl = "https://www.google.com/maps/search/?api=1&query=Wilhelmsh%C3%B6her%20Allee%2069%2C%2034121%20Kassel";
 
@@ -10,13 +9,11 @@ const labels = {
 	de: {
 		aria: "Schneller Kontakt",
 		whatsapp: "WhatsApp",
-		call: "Anrufen",
 		route: "Route",
 	},
 	ru: {
 		aria: "Быстрый контакт",
 		whatsapp: "WhatsApp",
-		call: "Позвонить",
 		route: "Маршрут",
 	},
 }[locale];
@@ -24,14 +21,13 @@ const labels = {
 
 <nav class="mobile-contact-bar" aria-label={labels.aria}>
 	<a href={whatsappUrl}>{labels.whatsapp}</a>
-	<a href={`tel:${phoneNumber}`}>{labels.call}</a>
 	<a href={routeUrl}>{labels.route}</a>
 </nav>
 
 <style is:global>
 	@media (max-width: 759px) {
 		body {
-			padding-bottom: 76px;
+			padding-bottom: 68px;
 		}
 	}
 </style>
@@ -44,31 +40,32 @@ const labels = {
 	@media (max-width: 759px) {
 		.mobile-contact-bar {
 			position: fixed;
-			right: 12px;
-			bottom: 12px;
-			left: 12px;
+			right: 10px;
+			bottom: 10px;
+			left: 10px;
 			z-index: 20;
 			display: grid;
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 			gap: 1px;
 			overflow: hidden;
-			border: 1px solid rgba(29, 27, 24, 0.16);
+			border: 1px solid rgba(29, 27, 24, 0.12);
 			border-radius: 8px;
 			background: rgba(248, 245, 239, 0.94);
-			box-shadow: 0 16px 50px rgba(29, 27, 24, 0.16);
+			box-shadow: 0 12px 36px rgba(29, 27, 24, 0.14);
 			backdrop-filter: blur(18px);
 		}
 
 		.mobile-contact-bar a {
 			display: grid;
-			min-height: 52px;
+			min-height: 48px;
 			place-items: center;
-			background: rgba(255, 253, 248, 0.82);
+			background: rgba(255, 253, 248, 0.86);
 			color: #1d1b18;
-			font-size: 14px;
-			font-weight: 800;
+			font-size: 13px;
+			font-weight: 900;
 			letter-spacing: 0;
 			text-decoration: none;
+			text-transform: uppercase;
 		}
 	}
 </style>

@@ -1,8 +1,9 @@
 ﻿export type BouquetStatus = "available" | "reserved" | "sold" | "archived";
-export type ClassicFlowerStatus = "available" | "limited" | "unavailable";
+export type ProductStatus = "available" | "limited" | "unavailable";
 
 export type AuthorBouquet = {
 	id: string;
+	code: string;
 	title: {
 		de: string;
 		ru: string;
@@ -20,7 +21,7 @@ export type AuthorBouquet = {
 	};
 };
 
-export type ClassicFlower = {
+export type FlowerProduct = {
 	id: string;
 	title: {
 		de: string;
@@ -30,7 +31,12 @@ export type ClassicFlower = {
 		de: string;
 		ru: string;
 	};
-	status: ClassicFlowerStatus;
+	status: ProductStatus;
+	image: string;
+	imageAlt: {
+		de: string;
+		ru: string;
+	};
 	variants: Array<{
 		label: {
 			de: string;
@@ -42,7 +48,8 @@ export type ClassicFlower = {
 
 export const authorBouquets: AuthorBouquet[] = [
 	{
-		id: "bouquet-blush-rose-eustoma",
+		id: "nr0023",
+		code: "Nr0023",
 		title: {
 			de: "Rosa Morgen",
 			ru: "Розовое утро",
@@ -60,7 +67,8 @@ export const authorBouquets: AuthorBouquet[] = [
 		},
 	},
 	{
-		id: "bouquet-pastel-hydrangea",
+		id: "nr0024",
+		code: "Nr0024",
 		title: {
 			de: "Pastellgruß",
 			ru: "Пастельное послание",
@@ -78,7 +86,8 @@ export const authorBouquets: AuthorBouquet[] = [
 		},
 	},
 	{
-		id: "bouquet-pink-celebration",
+		id: "nr0025",
+		code: "Nr0025",
 		title: {
 			de: "Pink Celebration",
 			ru: "Розовый праздник",
@@ -96,7 +105,8 @@ export const authorBouquets: AuthorBouquet[] = [
 		},
 	},
 	{
-		id: "bouquet-blue-hydrangea",
+		id: "nr0026",
+		code: "Nr0026",
 		title: {
 			de: "Blauer Gedanke",
 			ru: "Голубая мысль",
@@ -115,18 +125,17 @@ export const authorBouquets: AuthorBouquet[] = [
 	},
 ];
 
-export const classicFlowers: ClassicFlower[] = [
+export const roseProducts: FlowerProduct[] = [
 	{
-		id: "classic-roses",
-		title: {
-			de: "Rosen",
-			ru: "Розы",
-		},
+		id: "roses-white",
+		title: { de: "Weiße Rosen", ru: "Белые розы" },
 		description: {
-			de: "Klassische Rosen für klare Gesten: Liebe, Dankbarkeit oder Aufmerksamkeit.",
-			ru: "Классические розы для понятного жеста: любовь, благодарность или внимание.",
+			de: "Klassisch, ruhig und hell. Für Dankbarkeit, Respekt und klare Gesten.",
+			ru: "Классические, спокойные и светлые. Для благодарности, уважения и понятного жеста.",
 		},
 		status: "available",
+		image: "/images/bouquets/white-roses.webp",
+		imageAlt: { de: "Großer Strauß weißer Rosen", ru: "Большой букет белых роз" },
 		variants: [
 			{ label: { de: "10 Stück", ru: "10 штук" }, price: "35 €" },
 			{ label: { de: "20 Stück", ru: "20 штук" }, price: "65 €" },
@@ -134,20 +143,75 @@ export const classicFlowers: ClassicFlower[] = [
 		],
 	},
 	{
-		id: "classic-chrysanthemums",
-		title: {
-			de: "Chrysanthemen",
-			ru: "Хризантемы",
-		},
+		id: "roses-pink",
+		title: { de: "Rosa Rosen", ru: "Розовые розы" },
 		description: {
-			de: "Frische Einzelblumen oder mehrere Stiele für leichte, helle Arrangements.",
-			ru: "Свежие цветы поштучно или несколько стеблей для лёгких светлых композиций.",
+			de: "Weich und herzlich. Für Liebe, Nähe und kleine besondere Momente.",
+			ru: "Мягкие и тёплые. Для любви, близости и небольших особенных моментов.",
 		},
 		status: "limited",
+		image: "/images/bouquets/blush-rose-eustoma.webp",
+		imageAlt: { de: "Rosa Rosen in einem hellen Strauß", ru: "Розовые розы в светлом букете" },
+		variants: [
+			{ label: { de: "10 Stück", ru: "10 штук" }, price: "39 €" },
+			{ label: { de: "20 Stück", ru: "20 штук" }, price: "72 €" },
+		],
+	},
+	{
+		id: "roses-mixed",
+		title: { de: "Rosen gemischt", ru: "Розы микс" },
+		description: {
+			de: "Eine flexible Auswahl, wenn die Farbe zum Anlass passen soll.",
+			ru: "Гибкий вариант, когда цвет хочется подобрать под повод.",
+		},
+		status: "available",
+		image: "/images/bouquets/pink-celebration.webp",
+		imageAlt: { de: "Gemischter Strauß mit rosa Rosen", ru: "Смешанный букет с розовыми розами" },
+		variants: [
+			{ label: { de: "10 Stück", ru: "10 штук" }, price: "ab 35 €" },
+			{ label: { de: "20 Stück", ru: "20 штук" }, price: "ab 65 €" },
+		],
+	},
+];
+
+export const seasonalFlowers: FlowerProduct[] = [
+	{
+		id: "seasonal-hydrangea",
+		title: { de: "Hortensien", ru: "Гортензии" },
+		description: {
+			de: "Voluminös, weich und besonders ausdrucksstark in saisonalen Farben.",
+			ru: "Объёмные, мягкие и выразительные в сезонных оттенках.",
+		},
+		status: "available",
+		image: "/images/bouquets/blue-hydrangea.webp",
+		imageAlt: { de: "Blau-weiße Hortensien", ru: "Голубые и белые гортензии" },
+		variants: [{ label: { de: "nach Auswahl", ru: "по выбору" }, price: "ab 12 €" }],
+	},
+	{
+		id: "seasonal-chrysanthemums",
+		title: { de: "Chrysanthemen", ru: "Хризантемы" },
+		description: {
+			de: "Frische Einzelblumen oder mehrere Stiele für leichte Arrangements.",
+			ru: "Свежие цветы поштучно или несколько стеблей для лёгких композиций.",
+		},
+		status: "limited",
+		image: "/images/bouquets/spring-color.webp",
+		imageAlt: { de: "Bunter saisonaler Strauß mit Chrysanthemen", ru: "Яркий сезонный букет с хризантемами" },
 		variants: [
 			{ label: { de: "1 Stück", ru: "1 штука" }, price: "4 €" },
 			{ label: { de: "10 Stück", ru: "10 штук" }, price: "35 €" },
 		],
 	},
+	{
+		id: "seasonal-pastel",
+		title: { de: "Pastellmix", ru: "Пастельный микс" },
+		description: {
+			de: "Saisonale helle Blüten für eine ruhige, freundliche Geste.",
+			ru: "Светлые сезонные цветы для спокойного и тёплого жеста.",
+		},
+		status: "available",
+		image: "/images/bouquets/pastel-hydrangea.webp",
+		imageAlt: { de: "Pastellfarbene saisonale Blumen", ru: "Пастельные сезонные цветы" },
+		variants: [{ label: { de: "nach Tagesangebot", ru: "по наличию дня" }, price: "ab 25 €" }],
+	},
 ];
-
