@@ -1,4 +1,5 @@
 ﻿---
+import BouquetShowcase from "../../components/BouquetShowcase.astro";
 const siteUrl = "https://blumenkassel.de";
 const canonicalUrl = `${siteUrl}/ru/`;
 const germanUrl = `${siteUrl}/`;
@@ -113,19 +114,7 @@ const floristSchema = {
 					говорить за вас.
 				</p>
 			</section>
-
-			<section id="heute" class="section">
-				<p class="eyebrow">Сегодня в наличии</p>
-				<h2>Сегодня в студии</h2>
-				<p>
-					Свежие букеты, созданные сегодня нашими флористами. Каждый из них собран
-					вручную и существует в единственном экземпляре.
-				</p>
-				<p class="note">
-					Если хотите узнать, что есть в наличии прямо сейчас, просто напишите нам.
-				</p>
-				<a class="button" href={instagramUrl}>Смотреть в Instagram</a>
-			</section>
+			<BouquetShowcase locale="ru" />
 
 			<section id="ueber-uns" class="section">
 				<p class="eyebrow">О нас</p>
@@ -477,4 +466,5 @@ const floristSchema = {
 		}
 	}
 </style>
+
 
