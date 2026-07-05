@@ -10,11 +10,11 @@ This project is a commercial website in Germany. Final legal texts must be revie
 - Brand: Sisters Studio – Blumen Kassel
 - Address: Wilhelmshöher Allee 69, 34121 Kassel, Deutschland
 - Phone: +49 160 2233298
-- Email: emmalgl9@gmail.com
+- Email: kontakt@blumenkassel.de
 - WhatsApp: +49 160 2233298
 - Instagram: https://www.instagram.com/blumen.kassel/
 - Website owner/contact responsible: Emma Mkrtchian
-- Responsible contact email: emmalgl9@gmail.com
+- Responsible contact email: kontakt@blumenkassel.de
 - Responsible contact phone: +49 160 2233298
 
 ## Missing Legal Data
@@ -22,7 +22,6 @@ This project is a commercial website in Germany. Final legal texts must be revie
 - Umsatzsteuer-ID, if available
 - Final legally reviewed Impressum text according to § 5 DDG
 - Final legally reviewed Datenschutz text according to DSGVO/GDPR
-- Confirmation whether a dedicated business email such as kontakt@blumenkassel.de will replace the Gmail address
 - Confirmation whether direct Google Maps or Instagram embeds will be used later
 - Confirmation whether analytics, pixels, newsletter, forms, payments, CMS, CRM, Supabase, Odoo, or AI services will be added later
 
@@ -50,10 +49,10 @@ Prefer simple external links before embedded third-party widgets to reduce priva
 
 - Replace draft Impressum with legally reviewed final text
 - Replace draft Datenschutz with legally reviewed final text
-- Confirm whether the Gmail address should be replaced by kontakt@blumenkassel.de
 - Confirm Cloudflare privacy wording and AVV/DPA status
 - Re-check Datenschutz if Instagram embed/feed is added
 - Re-check Datenschutz if Google Maps embed is added
 - Re-check Datenschutz and consent requirements before adding analytics, pixels, cookies, newsletter, forms, online payment, CRM, CMS, Supabase, Odoo, or AI services
 - Verify /impressum/ and /datenschutz/ are reachable from the footer
 - Run npm run build before merge
+
