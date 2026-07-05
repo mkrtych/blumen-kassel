@@ -1181,4 +1181,17 @@ const floristSchema = {
 		.section {
 			padding-block: 46px;
 		}
+	}
+	/* Hero opening refinement */
+	.hero {
+		align-items: start;
+		align-content: start;
+		padding-top: clamp(18px, 3.5vh, 34px);
+	}
+
+	@media (max-width: 720px) {
+		.hero {
+			min-height: calc(100svh - 46px);
+			padding-top: 16px;
+		}
 	}</style>
