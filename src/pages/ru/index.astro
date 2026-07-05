@@ -81,10 +81,15 @@ const floristSchema = {
 		<header class="site-header">
 			<a class="brand" href="/ru/">Sisters Studio</a>
 			<nav aria-label="Основная навигация">
-				<a href="#heute">Букеты в наличии</a>
 				<a href="#ueber-uns">О нас</a>
 				<a href="#kontakt">Контакты</a>
-				<a href={instagramUrl}>Instagram</a>
+				<a class="nav-icon instagram-icon" href={instagramUrl} aria-label="Instagram">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+						<circle cx="12" cy="12" r="4"></circle>
+						<circle cx="17.2" cy="6.8" r="1"></circle>
+					</svg>
+				</a>
 				<span class="language-switch" aria-label="Выбор языка">
 					<a href="/">DE</a>
 					<a aria-current="page" href="/ru/">RU</a>
@@ -931,6 +936,93 @@ const floristSchema = {
 		address {
 			font-size: 16px;
 			line-height: 1.6;
+		}
+	}
+
+	/* Header refinement */
+	.site-header {
+		align-items: center;
+		flex-direction: row;
+		gap: 18px;
+		padding: 6px clamp(14px, 4vw, 40px);
+	}
+
+	.brand {
+		font-size: clamp(18px, 2vw, 23px);
+		font-weight: 400;
+		line-height: 1;
+		text-transform: none;
+	}
+
+	.site-header nav {
+		align-items: center;
+		gap: clamp(10px, 2vw, 18px);
+		margin-left: auto;
+	}
+
+	.site-header nav a,
+	.language-switch a {
+		font-size: 11px;
+		font-weight: 300;
+		line-height: 1;
+		color: rgba(29, 27, 24, 0.72);
+		text-transform: uppercase;
+	}
+
+	.language-switch {
+		align-items: center;
+		gap: 6px;
+		font-weight: 300;
+	}
+
+	.language-switch a[aria-current="page"] {
+		font-weight: 400;
+		color: #1d1b18;
+	}
+
+	.nav-icon {
+		display: inline-grid;
+		width: 16px;
+		height: 16px;
+		place-items: center;
+	}
+
+	.nav-icon svg {
+		width: 15px;
+		height: 15px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.45;
+	}
+
+	@media (max-width: 720px) {
+		.site-header {
+			align-items: center;
+			flex-direction: row;
+			gap: 12px;
+			padding-block: 6px;
+		}
+
+		.brand {
+			font-size: 17px;
+			white-space: nowrap;
+		}
+
+		.site-header nav {
+			flex-wrap: nowrap;
+			gap: 9px;
+			overflow: hidden;
+		}
+
+		.site-header nav a,
+		.language-switch a {
+			font-size: 10px;
+		}
+
+		.nav-icon,
+		.nav-icon svg {
+			width: 14px;
+			height: 14px;
 		}
 	}
 </style>
